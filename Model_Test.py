@@ -293,8 +293,8 @@ img3_org = Image.open(original_path3)
 img4_org = Image.open(original_path4)
 img3_org = np.asarray(img3_org)
 img4_org = np.asarray(img4_org)
-img3_org = cv2.resize(img3_org, (456, 456))
-img4_org = cv2.resize(img4_org, (456, 456))
+img3_org = cv2.resize(img3_org, (240, 240))
+img4_org = cv2.resize(img4_org, (240, 240))
 
 windows_size=32
 # stride can be set as 2 or 4 or 8 based on the size of input images
@@ -419,7 +419,7 @@ for r in tqdm(range(0,img1.shape[0] - windowsize_r, stride)):
         else:
             map1[r:r+windowsize_r+1,c:c+windowsize_c+1] += -1
       
-  
+
     
 img3_org = Image.open(original_path3)
 img4_org = Image.open(original_path4)
@@ -482,8 +482,9 @@ variance=300
 pil_image=SSR(pil_image, variance)
 pil_image = cv2.resize(pil_image, (240, 240))
 #map1 = cv2.resize(map1, (240, 240))
+
 with col5:
-    st.image(map1, caption='Weight map',use_column_width='auto') 
+    st.image(FUSED_8, caption='Weight map',use_column_width='auto')   
 with col6:
     st.image(pil_image, caption='Fused Image', use_column_width='auto')
 
