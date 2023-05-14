@@ -478,7 +478,7 @@ variance=300
 pil_image=SSR(pil_image, variance)
 pil_image = cv2.resize(pil_image, (240, 240))
 map1 = cv2.resize(map1, (240, 240))
- with col5:
+with col5:
     st.image(map1, caption='Weight map',use_column_width='auto') 
 with col6:
     st.image(pil_image, caption='Fused Image', use_column_width='auto')
