@@ -233,8 +233,12 @@ img4_org = img4_org.resize((240, 240))
 img3_org = np.asarray(img3_org)
 img4_org = np.asarray(img4_org)
 
-img1_org = Image.open(original_path1)
+img1_org = Image.open(original_path4)
 img1_org = img1_org.resize((240, 240))
+
+org_vis = Image.open(original_path1)
+org_vis = org_vis.resize((240, 240))
+
 img2_org = Image.open(original_path2)
 img2_org = img2_org.resize((240, 240))
 img1_org = np.asarray(img1_org)
@@ -246,7 +250,7 @@ col1, col2,col3,col4,col5,col6 = st.columns(6)
 with col1:
     st.image(img3_org, caption='Infrared image', use_column_width='auto')
 with col2:
-    st.image(img1_org, caption='Visible image',use_column_width='auto')
+    st.image(org_vis, caption='Visible image',use_column_width='auto')
 with col3:
     st.image(img2_org, caption='Enhanced Infrared image',use_column_width='auto')
 with col4:
@@ -477,7 +481,7 @@ pil_image=pil_image.convert('RGB')
 variance=300
 pil_image=SSR(pil_image, variance)
 pil_image = cv2.resize(pil_image, (240, 240))
-map1 = cv2.resize(map1, (240, 240))
+#map1 = cv2.resize(map1, (240, 240))
 with col5:
     st.image(map1, caption='Weight map',use_column_width='auto') 
 with col6:
