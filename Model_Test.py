@@ -246,7 +246,7 @@ img2_org = np.asarray(img2_org)
 
 
 
-col1, col2,col3,col4,col5,col6 = st.columns(6)
+col1, col2,col3,col4,col5 = st.columns(5)
 with col1:
     st.image(img3_org, caption='Infrared image', use_column_width='auto')
 with col2:
@@ -485,9 +485,6 @@ variance=300
 pil_image=SSR(pil_image, variance)
 pil_image = cv2.resize(pil_image, (240, 240))
 #map1 = cv2.resize(map1, (240, 240))
-
-with col5:
-    st.image(gmap, caption='Weight map',use_column_width='auto') 
  
 with col6:
     st.image(pil_image, caption='Fused Image', use_column_width='auto')
