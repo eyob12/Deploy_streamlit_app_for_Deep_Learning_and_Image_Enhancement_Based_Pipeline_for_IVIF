@@ -19,8 +19,8 @@ from scipy import misc,ndimage
 import streamlit as st
 import json
 
-st.title("Six Paths Testing Model Section")
-'Done by Eyob: Six paths based deep learning approch to fuse infrared and visible image'
+st.title("Testing Model Section")
+'Done by Eyob: A Deep Learning and Image Enhancement Based Pipeline for Infrared and Visible Image Fusion'
 
 def singleScaleRetinex(img,variance):
     retinex = np.log10(img) - np.log10(cv2.GaussianBlur(img, (0, 0), variance))
@@ -242,15 +242,15 @@ img2_org = np.asarray(img2_org)
 
 
 
-col1, col2,col3,col4,col5 = st.columns(5)
+col1, col2,col3,col4,col5,col6 = st.columns(6)
 with col1:
     st.image(img3_org, caption='Infrared image', use_column_width='auto')
 with col2:
     st.image(img1_org, caption='Visible image',use_column_width='auto')
 with col3:
-    st.image(img4_org, caption='Enhanced Infrared image',use_column_width='auto')
+    st.image(img2_org, caption='Enhanced Infrared image',use_column_width='auto')
 with col4:
-    st.image(img2_org, caption='Enhanced Visible image',use_column_width='auto')
+    st.image(img4_org, caption='Enhanced Visible image',use_column_width='auto')
     
     
 #img4_org = cv2.cvtColor(img4_org, cv2.COLOR_BGR2GRAY)
@@ -414,7 +414,9 @@ for r in tqdm(range(0,img1.shape[0] - windowsize_r, stride)):
       
         else:
             map1[r:r+windowsize_r+1,c:c+windowsize_c+1] += -1
-         
+      
+  
+    
 img3_org = Image.open(original_path3)
 img4_org = Image.open(original_path4)
 
@@ -475,9 +477,11 @@ pil_image=pil_image.convert('RGB')
 variance=300
 pil_image=SSR(pil_image, variance)
 pil_image = cv2.resize(pil_image, (240, 240))
-
-with col5:
-    st.image(pil_image, caption='fused Image', use_column_width='auto')
+map1 = cv2.resize(map1, (240, 240))
+ with col5:
+    st.image(map1, caption='Weight map',use_column_width='auto') 
+with col6:
+    st.image(pil_image, caption='Fused Image', use_column_width='auto')
 
     
     
