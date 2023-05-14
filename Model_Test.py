@@ -486,7 +486,7 @@ pil_image=SSR(pil_image, variance)
 pil_image = cv2.resize(pil_image, (240, 240))
 #map1 = cv2.resize(map1, (240, 240))
  
-with col6:
+with col5:
     st.image(pil_image, caption='Fused Image', use_column_width='auto')
 
     
