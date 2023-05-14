@@ -442,7 +442,11 @@ gmap=np.zeros(img1_org.shape)
 weight1=np.zeros(img1_org.shape)
 weight2=np.zeros(img1_org.shape)
 
-FUSED_8=np.zeros(map1.shape)   
+FUSED_8=np.zeros(map1.shape)
+
+with col5:
+    st.image(FUSED_8, caption='Weight map',use_column_width='auto')  
+    
 for r in range(0,img1_org.shape[0], 1):
     for c in range(0,img1_org.shape[1], 1):
         
@@ -483,8 +487,7 @@ pil_image=SSR(pil_image, variance)
 pil_image = cv2.resize(pil_image, (240, 240))
 #map1 = cv2.resize(map1, (240, 240))
 
-with col5:
-    st.image(FUSED_8, caption='Weight map',use_column_width='auto')   
+ 
 with col6:
     st.image(pil_image, caption='Fused Image', use_column_width='auto')
 
