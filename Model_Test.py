@@ -220,7 +220,7 @@ print(path3)
 path2 = all_image_files[dataset_type]['org_ir']
 path4 = all_image_files[dataset_type]['enh_ir']
 
-original_path1 = path3
+original_path1 = path1
 original_path2 = path2
 original_path3 = path3
 original_path4 = path4
@@ -242,11 +242,15 @@ img2_org = np.asarray(img2_org)
 
 
 
-col1, col2,col3 = st.columns(3)
+col1, col2,col3,col4,col5 = st.columns(5)
 with col1:
     st.image(img3_org, caption='Infrared image', use_column_width='auto')
 with col2:
     st.image(img1_org, caption='Visible image',use_column_width='auto')
+with col3:
+    st.image(img4_org, caption='Enhanced Infrared image',use_column_width='auto')
+with col4:
+    st.image(img2_org, caption='Enhanced Visible image',use_column_width='auto')
     
     
 #img4_org = cv2.cvtColor(img4_org, cv2.COLOR_BGR2GRAY)
@@ -472,7 +476,7 @@ variance=300
 pil_image=SSR(pil_image, variance)
 pil_image = cv2.resize(pil_image, (240, 240))
 
-with col3:
+with col5:
     st.image(pil_image, caption='fused Image', use_column_width='auto')
 
     
